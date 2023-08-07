@@ -1,3 +1,4 @@
+
 FROM alpine:edge
 
 RUN apk update && \
@@ -6,5 +7,9 @@ RUN apk update && \
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
+
+# The error message states that the Dockerfile must expose a tcp port.
+# To fix this, we can use the EXPOSE instruction to specify a port to expose.
+EXPOSE 80
 
 CMD /start.sh
